@@ -1,16 +1,27 @@
-h2 {
-  font-family: 'Italianno';
-  font-size: 64px;
-  color: white;
-}
-
 .container-menu {
   display: flex;
   justify-content: center;
   align-items: center;
+  position: relative;
   background-color: #9D032B;
   width: 100%;
-  height: 150px;
+  height: 120px;
+  z-index: 1;
 }
 
+h2 {
+  margin-top: 20px;
+  position: absolute;
+  font-family: 'Italianno';
+  font-size: 64px;
+  color: white;
+  padding: 10px;
+}
 
+.icono {
+  width: 75px;
+  height: 75px;
+  position: absolute;
+  right: 20px;
+  margin-bottom: 10px;
+}
