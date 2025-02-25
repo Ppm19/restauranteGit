@@ -1,0 +1,27 @@
+@import url('https://fonts.googleapis.com/css2?family=Italianno&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=EB+Garamond:wght@400;500;600;700&display=swap');
+
+.breadCrumb {
+  display: flex;
+  justify-content: row;
+  align-items: center;
+  margin-left: 20px;
+}
+
+p {
+  font-family: 'EB Garamond', serif;
+  font-size: 20px;
+  margin-top: 10px;
+}
+
+.volver-principal {
+  background: none;
+  border: none;
+  font-family: 'EB Garamond', serif;
+  font-size: 20px;
+}
+
+.volver-principal:hover {
+  text-decoration: underline;
+}
+
