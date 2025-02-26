@@ -83,7 +83,7 @@
     .button-container {
         display: flex;
         justify-content: center;
-        margin-top: 90px;
+        margin-top: 20px;
     }
 
     button {
@@ -102,4 +102,22 @@
 
     button:hover {
         background-color: #7c0221;
+    }
+
+    .mensaje{
+        display: flex;
+        justify-content: center;
+        margin-top: 60px;
+    }
+    
+    .mensaje-exito {
+        color: #28a745;
+        font-weight: bold;
+        margin-top: 10px;
+    }
+    
+    .mensaje-error {
+        color: #dc3545;
+        font-weight: bold;
+        margin-top: 10px;
     }
