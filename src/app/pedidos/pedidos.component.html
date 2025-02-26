@@ -4,5 +4,23 @@
     <button class="volver-principal" (click)="principal()">Inicio</button>
     <p> >>> Pedidos</p>
   </div>
-  
+  <div class="menu-botones">
+    <button class="boton-menu" (click)="cambiarContenido('entrantes')"> Entrantes</button>
+    <button class="boton-menu" (click)="cambiarContenido('pastas')"> Pastas y Risottos</button>
+    <button class="boton-menu" (click)="cambiarContenido('carnes')"> Carnes y Pescados</button>
+    <button class="boton-menu" (click)="cambiarContenido('postres')"> Postres</button>
+    <button class="boton-menu" (click)="cambiarContenido('bebidas')"> Bebidas</button>
+  </div>
+  <div class="linea-divisora"></div>
+  <div class="carta">
+    <div class="plato" *ngFor="let plato of platos">
+      <img src="{{plato.foto}}" alt="foto" class="foto-plato">
+      <p class="nombre-plato">- {{plato.nombre}} -</p>
+      <p class="precio-plato">{{plato.precio}} €</p>
+      <button class="boton-pedido">Añadir</button>
+    </div>
+  </div>
+  <div class="ticket-pedido">
+
+  </div>
 </div>

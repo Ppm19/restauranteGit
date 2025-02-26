@@ -1,4 +1,4 @@
-export interface Entrantes {
+export interface Postres {
   id: string;
   foto: string;
   nombre: string;

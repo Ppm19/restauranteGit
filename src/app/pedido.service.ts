@@ -14,4 +14,20 @@ export class PedidoService {
   getEntrantes(): Observable<any> {
     return this.http.get(`${this.apiUrl}/entrantes`);
   }
+
+  getCarnes(): Observable<any> {
+    return this.http.get(`${this.apiUrl}/carnes`);
+  }
+
+  getPastas(): Observable<any> {
+    return this.http.get(`${this.apiUrl}/pasta`);
+  }
+
+  getPostres(): Observable<any> {
+    return this.http.get(`${this.apiUrl}/postres`);
+  }
+
+  getBebidas(): Observable<any> {
+    return this.http.get(`${this.apiUrl}/bebidas`);
+  }
 }
