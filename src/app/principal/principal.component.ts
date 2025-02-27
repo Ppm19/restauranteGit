@@ -16,4 +16,8 @@ export class PrincipalComponent {
   pedidos() {
     this.router.navigate(['/pedidos']);
   }
+
+  reservas() {
+    this.router.navigate(['/reservas']);
+  }
 }

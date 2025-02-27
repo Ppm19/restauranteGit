@@ -1,0 +1,41 @@
+<app-cabecera-usuario></app-cabecera-usuario>
+<nav aria-label="breadcrumb">
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a href="/">Inicio</a></li>
+        <li class="breadcrumb-item active" aria-current="page">Reservas</li>
+    </ol>
+</nav>
+<div class="container">
+    <div class="form-container">
+        <form (ngSubmit)="validarFormulario($event)" #reservaForm="ngForm">
+            <label for="nombre">Nombre:</label>
+            <div class="form-group">
+                <input type="text" id="nombre" name="nombre" [(ngModel)]="reserva.nombre" required>
+            </div>
+
+            <div class="form-group">
+            <div>
+                <label for="fecha">Fecha:</label>
+                <input type="date" id="fecha" name="fecha" [(ngModel)]="reserva.fecha" required>
+            </div>
+            <div>
+                <label for="hora">Hora:</label>
+                <input type="time" id="hora" name="hora" [(ngModel)]="reserva.hora" required>
+            </div>
+            <div>
+                <label for="comensales">Nº Comensales:</label>
+                <input type="number" id="comensales" name="ncomensales" [(ngModel)]="reserva.ncomensales" min="1" max="20" required>
+            </div>
+        </div>
+        <div class="mensaje">
+            <p class="mensaje-exito" *ngIf="mensajeExito">{{ mensajeExito }}</p>
+            <p class="mensaje-error" *ngIf="mensajeError">{{ mensajeError }}</p>
+        </div>
+        <div class="button-container">
+            <button type="submit">Reservar</button>
+        </div>
+        </form>
+    </div>
+</div>
+
+
