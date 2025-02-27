@@ -1,10 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Inject, PLATFORM_ID } from '@angular/core';
 import { CabeceraUsuarioComponent } from "../cabecera-usuario/cabecera-usuario.component";
 import { Pedido } from '../pedidos/modelos/pedido';
 import { PedidoService } from '../pedido.service';
 import { Router } from '@angular/router';
 import { FormsModule } from '@angular/forms';
-import { CommonModule } from '@angular/common';
+import { CommonModule, isPlatformBrowser } from '@angular/common';
 
 @Component({
   selector: 'app-realizar-pedido',
@@ -19,12 +19,18 @@ export class RealizarPedidoComponent implements OnInit {
 
   pedidos: Pedido[] = [];
 
-  pedido: Pedido = history.state.pedido;
+  pedido!: Pedido;
 
-  constructor(private pedidoService: PedidoService, private router: Router) {}
+  constructor(
+    private pedidoService: PedidoService,
+    private router: Router,
+    @Inject(PLATFORM_ID) private platformId: Object
+  ) {}
 
   ngOnInit() {
-    this.pedido = history.state.pedido || this.pedido;
+    if (isPlatformBrowser(this.platformId)) {
+      this.pedido = history.state.pedido
+    }
     this.obtenerPedidos();
   }
 
