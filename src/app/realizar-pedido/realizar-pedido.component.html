@@ -1,0 +1,25 @@
+<div class="principal">
+  <app-cabecera-usuario></app-cabecera-usuario>
+  <div class="breadCrumb">
+    <button class="volver-principal" (click)="principal()">Inicio</button>
+    <p> >>> </p>
+    <button class="volver-principal" (click)="pedidos()">Pedidos</button>
+    <p> >>> Realizar pedido</p>
+  </div>
+  <div class="formulario">
+    <div class="pedido-info" *ngFor="let plato of pedido.platos">
+      <p>Plato: {{plato.nombre}}</p>
+      <p>Descripción: {{plato.descripcion}}</p>
+      <p>Precio: {{plato.precio}} €</p>
+      <div class="linea-divisora"></div>
+    </div>
+      <p class="total-pedido">Total: {{pedido.precio}} €</p>
+    <form>
+      <label for="direccion">Dirección:</label>
+      <input type="text" id="direccion" name="direccion" [(ngModel)]="pedido.direccion" required><br>
+      <label for="telefono">Teléfono:</label>
+      <input type="text" id="telefono" name="telefono" [(ngModel)]="pedido.telefono" required><br>
+      <button class="boton-enviar" type="submit" (click)="realizarPedido()">Realizar pedido</button>
+    </form>
+  </div>
+</div>

@@ -61,12 +61,27 @@ p {
   margin-bottom: 20px;
 }
 
+.contenedor-carta {
+  display: flex;
+  justify-content: row !important;
+  gap: 10px;
+}
+
+.ticket-pedido {
+  width: 40%;
+  text-align: left;
+  margin-left: 100px;
+  margin-top: 100px;
+  padding: 20px;
+  margin-right: 60px;
+}
+
 .carta {
-  width: 70%;
+  width: 60%;
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 70px;
-  padding: 50px;
+  padding: 80px;
 }
 
 .plato {
@@ -81,10 +96,13 @@ p {
   width: 310px;
   height: 240px;
   object-fit: cover;
+  margin-top: 15px;
+  margin-bottom: 15px;
+  border-radius: 15px;
 }
 
 .nombre-plato {
-  font-family: 'EB Garamond', bold;
+  font-family: 'EB Garamond', serif;
   font-size: 20px;
   font-weight: bold;
 }
@@ -109,3 +127,52 @@ p {
   border: none;
   border-radius: 5px;
 }
+
+.linea-divisora2 {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  height: 1px;
+  background-color: #556B2F;
+}
+
+.total-pedido {
+  font-family: 'EB Garamond', serif;
+  font-size: 20px;
+  font-weight: bold;
+  text-align: left;
+}
+
+.nombre-plato2 {
+  font-family: 'EB Garamond', serif;
+  font-size: 20px;
+  text-align: left;
+}
+
+.descripcion-plato {
+  font-family: 'EB Garamond', serif;
+  font-size: 18px;
+  text-align: left;
+  font-style: italic;
+  color: #556B2F;
+}
+
+.icono2 {
+  display: flex;
+  align-items: end;
+  color: #9D032B;
+  margin-bottom: 10px;
+  margin-left: auto;
+}
+
+.boton-enviar {
+  width: 160px;
+  height: 40px;
+  background-color: #9D032B;
+  color: white;
+  font-family: 'EB Garamond', serif;
+  font-size: 20px;
+  border: none;
+  border-radius: 5px;
+}
+

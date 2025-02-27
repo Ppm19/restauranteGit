@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { CabeceraUsuarioComponent } from '../cabecera-usuario/cabecera-usuario.component';
 import { PedidoService } from '../pedido.service';
@@ -8,31 +8,43 @@ import { Carnes } from './modelos/carnes';
 import { Pasta } from './modelos/pasta';
 import { Postres } from './modelos/postres';
 import { Bebidas } from './modelos/bebidas';
-
+import { Pedido } from './modelos/pedido';
+import { MatIconModule } from '@angular/material/icon';
 
 @Component({
   selector: 'app-pedidos',
   standalone: true,
-  imports: [CabeceraUsuarioComponent, CommonModule],
+  imports: [CabeceraUsuarioComponent, CommonModule, MatIconModule],
   templateUrl: './pedidos.component.html',
-  styleUrl: './pedidos.component.css'
+  styleUrl: './pedidos.component.css',
+  providers: [PedidoService]
 })
-export class PedidosComponent {
+export class PedidosComponent implements OnInit {
 
   constructor(private router: Router, private pedidoService: PedidoService) {}
 
+  pedidoNumero: number = 1;
   entrantes: Entrantes[] = [];
   carnes: Carnes[] = [];
   pastas: Pasta[] = [];
   postres: Postres[] = [];
   bebidas: Bebidas[] = [];
-  platos: any[] = [];
+  platosCarta: any[] = [];
+
+  pedido: Pedido = {
+    nombre: `Pedido ${this.pedidoNumero}`,
+    platos: [],
+    precio: 0,
+    estadoReserva: 'pendiente',
+    direccion: '',
+    telefono: ''
+  };
 
   ngOnInit() {
     this.pedidoService.getEntrantes().subscribe(
       (data: Entrantes[]) => {
         this.entrantes = data;
-        this.platos = this.entrantes;
+        this.platosCarta = this.entrantes;
       },
       error => {
         console.error('Error al obtener los entrantes:', error);
@@ -71,32 +83,67 @@ export class PedidosComponent {
       }
     );
     this.cambiarContenido('entrantes');
+    this.obtenerNumeroPedido();
   }
 
   principal() {
     this.router.navigate(['/principal']);
   }
 
+  obtenerNumeroPedido() {
+    this.pedidoService.contarPedidos().subscribe((count: number) => {
+      this.pedidoNumero = count;
+    });
+  }
+
   cambiarContenido(tipo: string) {
     switch (tipo) {
       case 'entrantes':
-        this.platos = this.entrantes;
+        this.platosCarta = this.entrantes;
         break;
       case 'pastas':
-        this.platos = this.pastas;
+        this.platosCarta = this.pastas;
         break;
       case 'carnes':
-        this.platos = this.carnes;
+        this.platosCarta = this.carnes;
         break;
       case 'postres':
-        this.platos = this.postres;
+        this.platosCarta = this.postres;
         break;
       case 'bebidas':
-        this.platos = this.bebidas;
+        this.platosCarta = this.bebidas;
         break;
       default:
-        this.platos = [];
+        this.platosCarta = [];
         break;
     }
+  }
+
+  crearNuevoPedido() {
+    this.pedidoNumero++;
+    this.pedido = {
+      nombre: `Pedido ${this.pedidoNumero}`,
+      platos: [this.pedido.platos],
+      precio: this.pedido.platos.length > 0 ? this.pedido.platos.reduce((total: number, plato: any) => total + plato.precio, 0) : 0,
+      estadoReserva: 'pendiente',
+      direccion: '',
+      telefono: ''
+    };
+  }
+
+  agregarPlatoAlPedido(plato: any) {
+    this.pedido.platos.push(plato);
+    this.pedido.precio = this.pedido.platos.reduce((total, p) => total + p.precio, 0);
+    console.log(this.pedido);
+  }
+
+  eliminarPlato(plato: any) {
+    this.pedido.platos = this.pedido.platos.filter(p => p !== plato);
+    this.pedido.precio = this.pedido.platos.reduce((total, p) => total + p.precio, 0);
+    console.log(this.pedido);
+  }
+
+  enviarPedido() {
+    this.router.navigate(['/realizar-pedido'], { state: { pedido: this.pedido } });
   }
 }

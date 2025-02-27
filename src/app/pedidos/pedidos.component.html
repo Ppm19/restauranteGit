@@ -12,15 +12,26 @@
     <button class="boton-menu" (click)="cambiarContenido('bebidas')"> Bebidas</button>
   </div>
   <div class="linea-divisora"></div>
-  <div class="carta">
-    <div class="plato" *ngFor="let plato of platos">
-      <img src="{{plato.foto}}" alt="foto" class="foto-plato">
-      <p class="nombre-plato">- {{plato.nombre}} -</p>
-      <p class="precio-plato">{{plato.precio}} €</p>
-      <button class="boton-pedido">Añadir</button>
+  <div class="contenedor-carta">
+    <div class="carta">
+      <div class="plato" *ngFor="let plato of platosCarta">
+        <img src="{{plato.foto}}" alt="foto" class="foto-plato">
+        <p class="nombre-plato">- {{plato.nombre}} -</p>
+        <p class="precio-plato">{{plato.precio}} €</p>
+        <button class="boton-pedido" (click)="agregarPlatoAlPedido(plato)">Añadir</button>
+      </div>
+    </div>
+    <div class="ticket-pedido">
+      <p class="nombre-plato">Pedido</p>
+      <div class="pedido" *ngFor="let plato of pedido.platos">
+        <p class="nombre-plato2">- {{plato.nombre}}:</p>
+        <p class="descripcion-plato">{{plato.descripcion}}</p>
+        <mat-icon class="icono2" fontIcon="cancel" (click)="eliminarPlato(plato)"></mat-icon>
+      </div>
+      <div class="linea-divisora2"></div>
+      <p class="total-pedido">Total: {{pedido.precio}} €</p>
+      <button class="boton-enviar" (click)="enviarPedido()"> Realizar pedido </button>
     </div>
   </div>
-  <div class="ticket-pedido">
-
-  </div>
 </div>
+
