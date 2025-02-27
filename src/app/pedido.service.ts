@@ -38,4 +38,8 @@ export class PedidoService {
   contarPedidos(): Observable<number> {
     return this.http.get<number>(`${this.apiUrl}/pedidos`);
   }
+
+  obtenerPedidos(): Observable<Pedido[]> {
+    return this.http.get<Pedido[]>(`${this.apiUrl}/pedidos`);
+  }
 }

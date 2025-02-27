@@ -11,11 +11,13 @@ import { CommonModule } from '@angular/common';
   standalone: true,
   imports: [CabeceraUsuarioComponent, FormsModule, CommonModule],
   templateUrl: './realizar-pedido.component.html',
-  styleUrl: './realizar-pedido.component.css'
+  styleUrl: './realizar-pedido.component.css',
+  providers: [PedidoService]
 })
+
 export class RealizarPedidoComponent implements OnInit {
 
-  pedidoNumero: number = 1;
+  pedidos: Pedido[] = [];
 
   pedido: Pedido = history.state.pedido;
 
@@ -23,10 +25,10 @@ export class RealizarPedidoComponent implements OnInit {
 
   ngOnInit() {
     this.pedido = history.state.pedido || this.pedido;
-    this.obtenerNumeroPedido();
+    this.obtenerPedidos();
   }
 
-  pedidos() {
+  irPedidos() {
     this.router.navigate(['/pedidos']);
   }
 
@@ -35,6 +37,7 @@ export class RealizarPedidoComponent implements OnInit {
   }
 
   realizarPedido() {
+      this.pedido.nombre = `Pedido ${this.pedidos.length + 1}`;
       this.pedidoService.realizarPedido(this.pedido).subscribe(
       (response: any) => {
         console.log(response);
@@ -44,9 +47,9 @@ export class RealizarPedidoComponent implements OnInit {
     this.router.navigate(['/pedidos']);
   }
 
-  obtenerNumeroPedido() {
-    this.pedidoService.contarPedidos().subscribe((count: number) => {
-      this.pedidoNumero = count;
+  obtenerPedidos() {
+    this.pedidoService.obtenerPedidos().subscribe((pedidos: Pedido[]) => {
+      this.pedidos = pedidos;
     });
   }
 }

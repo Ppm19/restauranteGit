@@ -23,7 +23,6 @@ export class PedidosComponent implements OnInit {
 
   constructor(private router: Router, private pedidoService: PedidoService) {}
 
-  pedidoNumero: number = 1;
   entrantes: Entrantes[] = [];
   carnes: Carnes[] = [];
   pastas: Pasta[] = [];
@@ -32,7 +31,7 @@ export class PedidosComponent implements OnInit {
   platosCarta: any[] = [];
 
   pedido: Pedido = {
-    nombre: `Pedido ${this.pedidoNumero}`,
+    nombre: '',
     platos: [],
     precio: 0,
     estadoReserva: 'pendiente',
@@ -83,17 +82,10 @@ export class PedidosComponent implements OnInit {
       }
     );
     this.cambiarContenido('entrantes');
-    this.obtenerNumeroPedido();
   }
 
   principal() {
     this.router.navigate(['/principal']);
-  }
-
-  obtenerNumeroPedido() {
-    this.pedidoService.contarPedidos().subscribe((count: number) => {
-      this.pedidoNumero = count;
-    });
   }
 
   cambiarContenido(tipo: string) {
@@ -120,10 +112,9 @@ export class PedidosComponent implements OnInit {
   }
 
   crearNuevoPedido() {
-    this.pedidoNumero++;
     this.pedido = {
-      nombre: `Pedido ${this.pedidoNumero}`,
-      platos: [this.pedido.platos],
+      nombre: '',
+      platos: this.pedido.platos,
       precio: this.pedido.platos.length > 0 ? this.pedido.platos.reduce((total: number, plato: any) => total + plato.precio, 0) : 0,
       estadoReserva: 'pendiente',
       direccion: '',
@@ -144,6 +135,6 @@ export class PedidosComponent implements OnInit {
   }
 
   enviarPedido() {
-    this.router.navigate(['/realizar-pedido'], { state: { pedido: this.pedido } });
+    this.router.navigate(['/realizar-pedido'], { state: { pedido: this.pedido}});
   }
 }
