@@ -2,7 +2,7 @@ import { Component, OnInit, Inject, PLATFORM_ID } from '@angular/core';
 import { CabeceraUsuarioComponent } from "../cabecera-usuario/cabecera-usuario.component";
 import { Pedido } from '../pedidos/modelos/pedido';
 import { PedidoService } from '../pedido.service';
-import { Router } from '@angular/router';
+import { Router, Navigation } from '@angular/router';
 import { FormsModule } from '@angular/forms';
 import { CommonModule, isPlatformBrowser } from '@angular/common';
 
@@ -25,9 +25,7 @@ export class RealizarPedidoComponent implements OnInit {
     private pedidoService: PedidoService,
     private router: Router,
     @Inject(PLATFORM_ID) private platformId: Object
-  ) {}
-
-  ngOnInit() {
+  ) {
     const pedidoVacio = {
       nombre: '',
       platos: [],
@@ -37,11 +35,15 @@ export class RealizarPedidoComponent implements OnInit {
       telefono: ''
     };
 
-    if (isPlatformBrowser(this.platformId)) {
-      this.pedido = history.state.pedido || pedidoVacio;
+    const navigation = this.router.getCurrentNavigation();
+    if (navigation && navigation.extras.state) {
+      this.pedido = navigation.extras.state['pedido'];
     } else {
       this.pedido = pedidoVacio;
     }
+  }
+
+  ngOnInit() {
     this.obtenerPedidos();
   }
 
