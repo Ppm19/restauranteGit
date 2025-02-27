@@ -28,8 +28,19 @@ export class RealizarPedidoComponent implements OnInit {
   ) {}
 
   ngOnInit() {
+    const pedidoVacio = {
+      nombre: '',
+      platos: [],
+      precio: 0,
+      estadoReserva: 'pendiente',
+      direccion: '',
+      telefono: ''
+    };
+
     if (isPlatformBrowser(this.platformId)) {
-      this.pedido = history.state.pedido
+      this.pedido = history.state.pedido || pedidoVacio;
+    } else {
+      this.pedido = pedidoVacio;
     }
     this.obtenerPedidos();
   }
