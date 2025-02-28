@@ -6,8 +6,10 @@
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
-  width: 100vw;
-  height: 100vh;
+  width: 100%;
+  min-height: 100vh;
+  position: relative;
+  overflow-x: hidden;
 }
 
 .principal::before {
@@ -24,16 +26,23 @@
 .body {
   position: relative;
   z-index: 2;
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  padding-top: 10vh;
+  min-height: auto;
 }
 
 h1 {
   color: white;
   text-align: center;
-  margin-top: 80px;
+  margin: 0 auto 20px auto;
   font-size: 84px;
   line-height: 1.2;
   font-family: 'EB Garamond', bold;
   font-weight: bold;
+  padding: 0 20px;
 }
 
 h1 span {
@@ -45,8 +54,10 @@ h1 span {
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 50%;
-  gap: 50px;
+  gap: 30px;
+  padding: 0 20px;
+  flex-wrap: wrap;
+  margin-top: 20px;
 }
 
 .button {
@@ -60,4 +71,77 @@ h1 span {
   z-index: 1;
   font-family: 'EB Garamond', serif;
   font-weight: bold;
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
+
+.button:hover {
+  background-color: #7b0222;
+  transform: scale(1.05);
+}
+
+/* Media Queries */
+@media screen and (max-width: 1200px) {
+  h1 {
+    font-size: 72px;
+  }
+
+  .button {
+    width: 280px;
+    height: 90px;
+    font-size: 32px;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  h1 {
+    font-size: 56px;
+    margin: 0 auto 20px auto;
+  }
+
+  .button-container {
+    gap: 30px;
+    padding: 0 15px;
+  }
+
+  .button {
+    width: 250px;
+    height: 80px;
+    font-size: 28px;
+    border-radius: 35px;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  h1 {
+    font-size: 42px;
+    margin: 0 auto 20px auto;
+  }
+
+  .button-container {
+    gap: 20px;
+    padding: 0 10px;
+    flex-direction: column;
+  }
+
+  .button {
+    width: 220px;
+    height: 70px;
+    font-size: 24px;
+    border-radius: 30px;
+  }
+}
+
+/* Para pantallas muy pequeñas */
+@media screen and (max-width: 320px) {
+  h1 {
+    font-size: 36px;
+  }
+
+  .button {
+    width: 200px;
+    height: 60px;
+    font-size: 20px;
+    border-radius: 25px;
+  }
 }

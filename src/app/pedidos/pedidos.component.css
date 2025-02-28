@@ -3,23 +3,25 @@
 
 .breadCrumb {
   display: flex;
-  justify-content: row;
+  justify-content: flex-start;
   align-items: center;
-  margin-left: 40px;
-  margin-top: 20px;
+  margin: 20px;
+  flex-wrap: wrap;
+  gap: 10px;
 }
 
 p {
   font-family: 'EB Garamond', serif;
-  font-size: 20px;
-  margin-top: 10px;
+  font-size: 18px;
+  margin-top: 5px;
 }
 
 .volver-principal {
   background: none;
   border: none;
   font-family: 'EB Garamond', serif;
-  font-size: 20px;
+  font-size: 18px;
+  padding: 5px;
 }
 
 .volver-principal:hover {
@@ -28,151 +30,311 @@ p {
 
 .menu-botones {
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
   align-items: center;
   gap: 10px;
   width: 100%;
-  height: 265px;
+  height: auto;
+  padding: 20px;
+  flex-wrap: wrap;
 }
 
 .boton-menu {
-  width: 300px;
-  height: 215px;
+  width: 250px;
+  height: 180px;
   background-color: white;
-  border-color: #9D032B;
-  border-width: 1px;
-  border-radius: 35px;
+  border: 1px solid #9D032B;
+  border-radius: 25px;
   font-family: 'EB Garamond', serif;
-  font-size: 20px;
+  font-size: 18px;
   font-weight: bold;
   color: #9D032B;
-  margin-right: 40px;
-  margin-left: 40px;
+  margin: 10px;
+  transition: all 0.3s ease;
+}
+
+.boton-menu:hover {
+  background-color: #9D032B;
+  color: white;
 }
 
 .linea-divisora {
-  display: flex;
-  justify-content: center;
-  width: 95%;
+  width: 90%;
   height: 1px;
   background-color: #556B2F;
-  margin-left: 50px;
-  margin-top: 20px;
-  margin-bottom: 20px;
+  margin: 20px auto;
 }
 
 .contenedor-carta {
   display: flex;
-  justify-content: row !important;
-  gap: 10px;
+  flex-direction: row;
+  gap: 40px;
+  padding: 30px;
+  justify-content: center;
 }
 
 .ticket-pedido {
-  width: 40%;
+  width: 30%;
+  min-width: 300px;
+  max-width: 400px;
   text-align: left;
-  margin-left: 100px;
-  margin-top: 100px;
-  padding: 20px;
-  margin-right: 60px;
+  margin: 20px;
+  padding: 30px;
+  background-color: #f5f5f5;
+  border-radius: 15px;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+  height: fit-content;
 }
 
 .carta {
   width: 60%;
+  max-width: 1200px;
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 70px;
-  padding: 80px;
+  gap: 60px;
+  padding: 30px;
+  margin: 0;
 }
 
 .plato {
-  width: 350px;
-  height: 400px;
+  width: 100%;
+  height: auto;
   border: 1px solid #556B2F;
-  padding: 8px;
+  padding: 20px;
   text-align: center;
+  border-radius: 10px;
+  transition: transform 0.3s ease;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+}
+
+.plato:hover {
+  transform: translateY(-5px);
 }
 
 .foto-plato {
-  width: 310px;
-  height: 240px;
+  width: 100%;
+  height: 200px;
   object-fit: cover;
-  margin-top: 15px;
-  margin-bottom: 15px;
-  border-radius: 15px;
+  margin: 15px 0;
+  border-radius: 10px;
 }
 
 .nombre-plato {
   font-family: 'EB Garamond', serif;
-  font-size: 20px;
+  font-size: 18px;
   font-weight: bold;
+  margin: 15px 0;
 }
 
 .precio-plato {
   font-family: 'EB Garamond', serif;
-  font-size: 20px;
+  font-size: 18px;
   font-weight: bold;
   text-align: left;
-  margin-left: 25px;
+  margin: 15px 0;
+  padding-left: 10px;
 }
 
 .boton-pedido {
-  text-align: center;
-  margin-right: 50%;
-  width: 130px;
-  height: 30px;
+  width: 120px;
+  height: 35px;
   background-color: #556B2F;
   color: white;
   font-family: 'EB Garamond', serif;
-  font-size: 20px;
+  font-size: 16px;
   border: none;
   border-radius: 5px;
+  margin: 10px auto;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.boton-pedido:hover {
+  background-color: #445624;
 }
 
 .linea-divisora2 {
-  display: flex;
-  justify-content: center;
   width: 100%;
   height: 1px;
   background-color: #556B2F;
+  margin: 15px 0;
 }
 
 .total-pedido {
   font-family: 'EB Garamond', serif;
-  font-size: 20px;
+  font-size: 18px;
   font-weight: bold;
   text-align: left;
+  margin: 15px 0;
 }
 
 .nombre-plato2 {
   font-family: 'EB Garamond', serif;
-  font-size: 20px;
+  font-size: 18px;
   text-align: left;
+  margin: 5px 0;
 }
 
 .descripcion-plato {
   font-family: 'EB Garamond', serif;
-  font-size: 18px;
+  font-size: 16px;
   text-align: left;
   font-style: italic;
   color: #556B2F;
+  margin: 5px 0;
 }
 
 .icono2 {
   display: flex;
-  align-items: end;
+  align-items: center;
   color: #9D032B;
-  margin-bottom: 10px;
-  margin-left: auto;
+  margin: 5px 0;
+  cursor: pointer;
 }
 
 .boton-enviar {
-  width: 160px;
+  width: 100%;
+  max-width: 200px;
   height: 40px;
   background-color: #9D032B;
   color: white;
   font-family: 'EB Garamond', serif;
-  font-size: 20px;
+  font-size: 18px;
   border: none;
   border-radius: 5px;
+  margin: 15px 0;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.boton-enviar:hover {
+  background-color: #7b0222;
+}
+
+/* Media Queries */
+@media screen and (max-width: 1200px) {
+  .carta {
+    width: 65%;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 40px;
+    padding: 20px;
+  }
+
+  .ticket-pedido {
+    width: 35%;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .contenedor-carta {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .carta {
+    width: 100%;
+    padding: 15px;
+    gap: 30px;
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .ticket-pedido {
+    width: 100%;
+    max-width: 600px;
+    margin: 20px auto;
+    padding: 20px;
+    order: 1;
+  }
+
+  .menu-botones {
+    height: auto;
+    padding: 10px;
+  }
+
+  .boton-menu {
+    width: 200px;
+    height: 150px;
+    font-size: 16px;
+  }
+
+  .plato {
+    padding: 15px;
+    border-left: none;
+    border-right: none;
+    border-radius: 0;
+    box-shadow: none;
+  }
+
+  .foto-plato {
+    height: 180px;
+  }
+
+  p, .nombre-plato, .precio-plato {
+    font-size: 16px;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .breadCrumb {
+    margin: 10px;
+  }
+
+  .menu-botones {
+    padding: 5px;
+  }
+
+  .boton-menu {
+    width: 150px;
+    height: 120px;
+    font-size: 14px;
+    border-radius: 15px;
+  }
+
+  .contenedor-carta {
+    gap: 15px;
+    padding: 10px;
+  }
+
+  .carta {
+    grid-template-columns: repeat(1, 1fr);
+    gap: 25px;
+    padding: 10px;
+  }
+
+  .ticket-pedido {
+    padding: 15px;
+    max-width: 100%;
+  }
+
+  .plato {
+    padding: 10px 0;
+    border-left: none;
+    border-right: none;
+    border-radius: 0;
+    box-shadow: none;
+  }
+
+  .foto-plato {
+    height: 160px;
+  }
+
+  .nombre-plato, .precio-plato, .nombre-plato2 {
+    font-size: 14px;
+  }
+
+  .descripcion-plato {
+    font-size: 12px;
+  }
+
+  .boton-pedido {
+    width: 100px;
+    height: 30px;
+    font-size: 14px;
+  }
+
+  .boton-enviar {
+    height: 35px;
+    font-size: 16px;
+  }
 }
 
