@@ -1,27 +1,137 @@
-# RestauranteGit
+# Nombre del Proyecto
+restauranteGit
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 17.3.11.
+## Descripción
+Sistema de reserva de mesas y gestion de pedidos de un restaurante italiano.
 
-## Development server
+## Stack Tecnológico
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+### Frontend
+- Angular 17
+- TypeScript
+- HTML5
+- CSS3
+- Bootstrap
+- Angular Material
 
-## Code scaffolding
+### Backend
+- Node.js
+- Express.js
+- MongoDB (con MongoDB Compass)
+- Mongoose
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+### Despliegue
+- Frontend: Vercel
+- Backend: Vercel
+- Base de datos: MongoDB Atlas
 
-## Build
+## Características Principales
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+- Sistema de reserva de mesas
+- Panel de administración
+- Sistema de gestion de pedidos
 
-## Running unit tests
+## Requisitos Previos
+- Node.js (versión 21.6.1 o superior)
+- Angular CLI
+- MongoDB Compass
+- Express
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+## Funcionalidad
 
-## Running end-to-end tests
+### Página Principal
+- Página de bienvenida con diseño elegante y minimalista
+- Acceso directo a las secciones principales: Reservas y Pedidos
+- Navegación intuitiva mediante botones
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
+### Sistema de Reservas
+- Formulario de reserva que permite al cliente:
+  - Seleccionar fecha y hora
+  - Indicar número de comensales
+  - Añadir nombre a la reserva
 
-## Further help
+### Gestión de Pedidos
+- Carta digital completa del restaurante
+- Selección de platos y personalización de pedidos
+- Carrito de compra con resumen del pedido
+- Proceso de checkout simplificado
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+### Confirmación de Pedido
+
+- Resumen del pedido
+- Rellenar dirección y teléfono
+- Confirmación de pedido y notificación al restaurante
+
+### Características Adicionales
+- Diseño responsive adaptado a todos los dispositivos
+- Interfaz intuitiva y fácil de usar
+
+## Instalación y Configuración
+
+### Frontend
+```bash
+# Clonar el repositorio
+git clone https://github.com/Ppm19/restauranteGit.git
+
+# Navegar al directorio del proyecto
+cd restauranteGit
+
+# Instalar dependencias
+npm install
+
+# Iniciar servidor de desarrollo
+ng serve
+```
+
+### Backend
+```bash
+# Clonar el repositorio
+git clone https://github.com/Ppm19/backEnd-restauranteGit.git
+
+# Navegar al directorio del backend
+cd backEnd-restauranteGit
+
+# Instalar dependencias
+npm install
+
+# Iniciar servidor
+npm run dev
+```
+
+## API Endpoints
+
+### Carta/Menú
+- `GET /entrantes` - Obtener lista de entrantes
+- `GET /carnes` - Obtener lista de carnes
+- `GET /pasta` - Obtener lista de pastas
+- `GET /postres` - Obtener lista de postres
+- `GET /bebidas` - Obtener lista de bebidas
+
+### Pedidos
+- `GET /pedidos` - Obtener todos los pedidos
+- `POST /realizar-pedido` - Crear nuevo pedido
+  ```typescript
+  interface Pedido {
+    nombre: string;        // Nombre del pedido (generado automáticamente)
+    platos: any[];        // Array de platos seleccionados
+    precio: number;       // Precio total del pedido
+    estadoReserva: string; // Estado del pedido (por defecto: 'pendiente')
+    direccion: string;    // Dirección de entrega
+    telefono: string;     // Teléfono de contacto
+  }
+  ```
+
+### Reservas
+- `POST /crear-reserva` - Crear nueva reserva
+  ```typescript
+  interface Reserva {
+    nombre: string;     // Nombre de la persona que reserva
+    fecha: string;      // Fecha de la reserva
+    hora: string;       // Hora de la reserva
+    ncomensales: number; // Número de comensales
+  }
+  ```
+
+### Base URL
+- Frontend: https://front-restaurante-git.vercel.app
+- Backend: https://back-end-restaurante-git.vercel.app
