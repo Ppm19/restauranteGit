@@ -23,6 +23,7 @@ p {
   font-family: 'EB Garamond', serif;
   font-size: 18px;
   padding: 5px;
+  cursor: pointer;
 }
 
 .volver-principal:hover {
@@ -119,11 +120,7 @@ input {
     width: 95%;
   }
 
-  p {
-    font-size: 16px;
-  }
-
-  .volver-principal {
+  p, .volver-principal {
     font-size: 16px;
   }
 
@@ -140,7 +137,6 @@ input {
 @media screen and (max-width: 480px) {
   .breadCrumb {
     margin-left: 10px;
-    font-size: 14px;
   }
 
   .formulario {
@@ -154,11 +150,7 @@ input {
     padding: 5px;
   }
 
-  p {
-    font-size: 14px;
-  }
-
-  .volver-principal {
+  p, .volver-principal {
     font-size: 14px;
   }
 

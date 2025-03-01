@@ -14,12 +14,29 @@
       <div class="linea-divisora"></div>
     </div>
       <p class="total-pedido">Total: {{pedido.precio}} €</p>
-    <form>
-      <label for="direccion">Dirección:</label>
-      <input type="text" id="direccion" name="direccion" [(ngModel)]="pedido.direccion" required><br>
-      <label for="telefono">Teléfono:</label>
-      <input type="text" id="telefono" name="telefono" [(ngModel)]="pedido.telefono" required><br>
-      <button class="boton-enviar" type="submit" (click)="realizarPedido()">Realizar pedido</button>
+    <form (ngSubmit)="realizarPedido()">
+      <label for="direccion">Dirección: </label>
+      <input
+        type="text"
+        id="direccion"
+        name="direccion"
+        [(ngModel)]="pedido.direccion"
+        required
+        #direccion="ngModel"
+        [class.invalid]="direccion.invalid && (direccion.dirty || direccion.touched)">
+
+      <label for="telefono">Teléfono: </label>
+      <input
+        type="tel"
+        id="telefono"
+        name="telefono"
+        [(ngModel)]="pedido.telefono"
+        required
+        pattern="[0-9]{9}"
+        #telefono="ngModel"
+        [class.invalid]="telefono.invalid && (telefono.dirty || telefono.touched)">
+
+      <button class="boton-enviar" type="submit">Realizar pedido</button>
     </form>
   </div>
 </div>

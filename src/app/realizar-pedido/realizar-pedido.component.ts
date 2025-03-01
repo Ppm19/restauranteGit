@@ -56,14 +56,29 @@ export class RealizarPedidoComponent implements OnInit {
   }
 
   realizarPedido() {
-      this.pedido.nombre = `Pedido ${this.pedidos.length + 1}`;
-      this.pedidoService.realizarPedido(this.pedido).subscribe(
+
+    if (!this.pedido.direccion || !this.pedido.telefono) {
+      alert("Por favor, rellene todos los campos obligatorios");
+      return;
+    }
+
+    const telefonoRegex = /^[0-9]{9}$/;
+    if (!telefonoRegex.test(this.pedido.telefono)) {
+      alert("Por favor, introduzca un número de teléfono válido (9 dígitos)");
+      return;
+    }
+
+    this.pedido.nombre = `Pedido ${this.pedidos.length + 1}`;
+    this.pedidoService.realizarPedido(this.pedido).subscribe(
       (response: any) => {
         console.log(response);
+        alert("Pedido realizado correctamente");
+        this.router.navigate(['/pedidos']);
+      },
+      (error) => {
+        alert("Error al realizar el pedido");
       }
     );
-    alert("Pedido realizado correctamente");
-    this.router.navigate(['/pedidos']);
   }
 
   obtenerPedidos() {
